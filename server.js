@@ -52,7 +52,7 @@ app.get("/upscale", (req, res) => {
 });
 
 app.get("/pdf-to-jpg", (req, res) => {
-  res.render("pdftojpg", "Upscale Image");
+  res.render("pdftojpg", { title: "Upscale Image" });
 });
 
 const PORT = process.env.PORT;
