@@ -16,8 +16,44 @@ app.get("/", (req, res) => {
 
 // EDITOR
 app.get("/editor", (req, res) => {
-    res.render('editor', {title: "Image Editor"})
-})
+  res.render("editor", { title: "Image Editor" });
+});
+
+app.get("/compress", (req, res) => {
+  res.render("compress", { title: "Compress Images" });
+});
+
+app.get("/metadata", (req, res) => {
+  res.render("metadata", { title: "Metadata Editor" });
+});
+
+app.get("/remove-bg", (req, res) => {
+  res.render("remove", { title: "Remove Background" });
+});
+
+app.get("/img-to-pdf", (req, res) => {
+  res.render("imgtopdf", { title: "Image to PDF" });
+});
+
+app.get("/filters", (req, res) => {
+  res.render("filters", { title: "Apply Filters" });
+});
+
+app.get("/convert", (req, res) => {
+  res.render("convert", { title: "convert" });
+});
+
+app.get("/extract-text", (req, res) => {
+  res.render("extract", { title: "Extract Texts from your image" });
+});
+
+app.get("/upscale", (req, res) => {
+  res.render("upscale", "Upscale Image");
+});
+
+app.get("/pdf-to-jpg", (req, res) => {
+  res.render("pdftojpg", "Upscale Image");
+});
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
