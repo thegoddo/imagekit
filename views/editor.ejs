@@ -3,56 +3,142 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <title>Editor | Image Helper Kit</title>
+
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editor.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css"
+    />
   </head>
   <body>
-    <div class="container">
-      <h2>Simple Image Editor</h2>
+    <div class="main-wrapper">
+      <div style="margin-bottom: 20px">
+        <a
+          href="/"
+          style="color: black; text-decoration: none; font-weight: bold"
+          >← BACK TO TOOLS</a
+        >
+      </div>
 
-      <div class="wrapper">
+      <div class="editor-container">
         <div class="editor-panel">
-          <div class="filter">
-            <label>Brightness</label>
-            <input type="range" id="brightness" min="0" max="200" value="100" />
-          </div>
-          <div class="filter">
-            <label>Saturation</label>
-            <input type="range" id="saturation" min="0" max="200" value="100" />
-          </div>
-          <div class="filter">
-            <label>Inversion</label>
-            <input type="range" id="inversion" min="0" max="100" value="0" />
-          </div>
-          <div class="filter">
-            <label>Grayscale</label>
-            <input type="range" id="grayscale" min="0" max="100" value="0" />
+          <div class="filter-section">
+            <h3>Filters</h3>
+            <div class="filter">
+              <label>Brightness</label>
+              <input
+                type="range"
+                id="brightness"
+                min="0"
+                max="200"
+                value="100"
+              />
+            </div>
+            <div class="filter">
+              <label>Saturation</label>
+              <input
+                type="range"
+                id="saturation"
+                min="0"
+                max="200"
+                value="100"
+              />
+            </div>
+            <div class="filter">
+              <label>Inversion</label>
+              <input type="range" id="inversion" min="0" max="100" value="0" />
+            </div>
+            <div class="filter">
+              <label>Grayscale</label>
+              <input type="range" id="grayscale" min="0" max="100" value="0" />
+            </div>
           </div>
 
-          <div class="rotate-btns">
-            <button id="rotate-left">Rotate Left</button>
-            <button id="rotate-right">Rotate Right</button>
+          <div class="filter-section">
+            <h3>Rotate</h3>
+            <div class="rotate-btns">
+              <button id="rotate-left">⟲ Left</button>
+              <button id="rotate-right">Right ⟳</button>
+            </div>
           </div>
 
-          <div class="controls">
-            <button id="reset-btn">Reset Filters</button>
-            <button id="save-btn" class="save">Save Image</button>
+          <div
+            class="filter-section"
+            style="
+              border-top: 2px solid #000;
+              margin-top: 15px;
+              padding-top: 15px;
+            "
+          >
+<!--             <h3>Geometry</h3 -->>
+
+            <!-- <label>Resize</label>
+            <div style="display: flex; gap: 5px; margin-bottom: 10px">
+              <input
+                type="number"
+                id="resize-w"
+                placeholder="W"
+                style="width: 50%; padding: 5px; border: 2px solid #000"
+              />
+              <input
+                type="number"
+                id="resize-h"
+                placeholder="H"
+                style="width: 50%; padding: 5px; border: 2px solid #000"
+              />
+            </div> -->
+       <!--      <button id="resize-btn" style="width: 100%; margin-bottom: 15px">
+              Apply Resize
+            </button>
+ -->
+            <label>Crop</label>
+            <button id="start-crop-btn" style="width: 100%">Enable Crop</button>
+
+            <div
+              id="crop-actions"
+              style="display: none; gap: 5px; margin-top: 5px"
+            >
+              <button
+                id="crop-cut-btn"
+                style="background: #000; color: #fff; flex: 1"
+              >
+                Cut
+              </button>
+              <button id="crop-cancel-btn" style="flex: 1">Cancel</button>
+            </div>
+          </div>
+
+          <div
+            class="controls"
+            style="
+              margin-top: 20px;
+              border-top: 2px solid #000;
+              padding-top: 20px;
+            "
+          >
+            <button id="reset-btn">Reset All</button>
             <input type="file" id="file-input" accept="image/*" hidden />
             <button
               class="choose-img"
               onclick="document.querySelector('#file-input').click()"
             >
-              Choose Image
+              Upload New
             </button>
+            <button id="save-btn" class="save">Download Result</button>
           </div>
         </div>
 
         <div class="preview-img">
-          <canvas id="canvas"></canvas>
+          <div id="canvas-container" style="max-width: 100%; max-height: 100%">
+            <canvas id="canvas"></canvas>
+          </div>
         </div>
       </div>
     </div>
 
-    <script src="/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script src="/js/editor.js"></script>
   </body>
 </html>
