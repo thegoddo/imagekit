@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Format Converter | Image Helper Kit</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editor.css" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="hero-box">
+        <h1>Format Converter</h1>
+        <p class="subtitle">Binary Re-encoding Engine</p>
+      </div>
+
+      <div class="editor-container">
+        <div class="editor-panel">
+          <div class="filter-section">
+            <h3>1. Load Source</h3>
+            <input type="file" id="file-input" accept="image/*" hidden />
+            <button
+              class="choose-img"
+              onclick="document.getElementById('file-input').click()"
+            >
+              Select Image
+            </button>
+            <div
+              id="file-info"
+              style="font-size: 0.7rem; margin-top: 10px; opacity: 0.7"
+            ></div>
+          </div>
+
+          <div class="filter-section">
+            <h3>2. Output Format</h3>
+            <div class="filter">
+              <label>Target Extension</label>
+              <select
+                id="target-format"
+                style="
+                  width: 100%;
+                  border: 2px solid #000;
+                  padding: 8px;
+                  font-family: inherit;
+                  font-weight: bold;
+                "
+              >
+                <option value="image/jpeg">JPEG (.jpg)</option>
+                <option value="image/png">PNG (.png)</option>
+                <option value="image/webp">WEBP (.webp)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h3>3. Quality Tuning</h3>
+            <div class="filter">
+              <label id="quality-label">Quality (85%)</label>
+              <input
+                type="range"
+                id="quality-slider"
+                min="1"
+                max="100"
+                value="85"
+              />
+              <p style="font-size: 0.65rem; margin-top: 5px; opacity: 0.6">
+                *Compression factor for JPG/WEBP.
+              </p>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h3>4. Export</h3>
+            <button class="save" id="convert-btn">Convert & Download</button>
+          </div>
+        </div>
+
+        <div class="preview-img" style="flex-direction: column">
+          <div
+            id="status-text"
+            style="
+              margin-bottom: 10px;
+              font-weight: bold;
+              text-transform: uppercase;
+            "
+          >
+            Real-time Preview
+          </div>
+          <canvas id="preview-canvas"></canvas>
+          <div
+            id="output-meta"
+            style="margin-top: 15px; font-size: 0.85rem; font-family: monospace"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/js/convert.js"></script>
+  </body>
+</html>

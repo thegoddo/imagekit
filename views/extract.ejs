@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Text Architect | Retro OCR</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editor.css" />
+    <style>
+      .ocr-viewport {
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
+      }
+      #ocr-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: auto;
+      }
+      .word-box {
+        position: absolute;
+        border: 1px dashed rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .word-box:hover {
+        background: rgba(255, 255, 204, 0.5);
+        border-color: #000;
+      }
+
+      .output-terminal {
+        width: 100%;
+        height: 200px;
+        margin-top: 20px;
+        padding: 15px;
+        border: 2px solid #000;
+        background: #fff;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        resize: none;
+        box-shadow: 4px 4px 0px #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="hero-box">
+        <h1>Text Architect</h1>
+        <p class="subtitle">Optical Character Recognition Engine</p>
+      </div>
+
+      <div class="editor-container">
+        <div class="editor-panel">
+          <div class="filter-section">
+            <h3>1. Input</h3>
+            <input type="file" id="file-input" accept="image/*" hidden />
+            <button
+              class="choose-img"
+              onclick="document.getElementById('file-input').click()"
+            >
+              Load Image
+            </button>
+          </div>
+          <div class="filter-section">
+            <h3>2. Language</h3>
+            <select
+              id="lang-select"
+              style="width: 100%; border: 2px solid #000; padding: 5px"
+            >
+              <option value="eng">English</option>
+              <option value="spa">Spanish</option>
+              <option value="fra">French</option>
+            </select>
+          </div>
+          <div class="filter-section">
+            <button class="save" id="extract-btn">Run Extraction</button>
+          </div>
+        </div>
+
+        <div
+          class="preview-img"
+          style="
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+          "
+        >
+          <div
+            id="status-text"
+            style="
+              font-weight: bold;
+              text-transform: uppercase;
+              margin-bottom: 10px;
+            "
+          >
+            OCR Visualizer
+          </div>
+
+          <div class="ocr-viewport">
+            <canvas id="ocr-canvas"></canvas>
+            <div id="ocr-overlay"></div>
+          </div>
+
+          <h3>Extracted Content:</h3>
+          <textarea
+            id="output-text"
+            class="output-terminal"
+            placeholder="Binary characters will appear here..."
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script type="module" src="/js/extract.js"></script>
+  </body>
+</html>
