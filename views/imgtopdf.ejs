@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image to PDF | Retro Tool</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editor.css" />
+    <style>
+      .pdf-queue {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+        width: 100%;
+      }
+      .queue-item {
+        border: 2px solid #000;
+        aspect-ratio: 1;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .remove-img {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: red;
+        color: white;
+        border: 1px solid #000;
+        cursor: pointer;
+        font-size: 10px;
+        padding: 2px 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="hero-box">
+        <h1>Document Architect</h1>
+        <p class="subtitle">Convert Visuals to Portable Document Format</p>
+      </div>
+
+      <div class="editor-container">
+        <div class="editor-panel">
+          <div class="filter-section">
+            <h3>1. Collect</h3>
+            <input
+              type="file"
+              id="file-input"
+              accept="image/*"
+              multiple
+              hidden
+            />
+            <button
+              class="choose-img"
+              onclick="document.getElementById('file-input').click()"
+            >
+              Add Images
+            </button>
+          </div>
+
+          <div class="filter-section">
+            <h3>2. Layout</h3>
+            <div class="filter">
+              <label>Orientation</label>
+              <select
+                id="pdf-orient"
+                style="
+                  width: 100%;
+                  border: 2px solid #000;
+                  padding: 5px;
+                  font-family: inherit;
+                "
+              >
+                <option value="p">Portrait</option>
+                <option value="l">Landscape</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h3>3. Build</h3>
+            <button class="save" id="convert-btn">Generate PDF</button>
+          </div>
+        </div>
+
+        <div
+          class="preview-img"
+          style="
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+          "
+        >
+          <div
+            id="status-text"
+            style="
+              margin-bottom: 15px;
+              font-weight: bold;
+              text-transform: uppercase;
+            "
+          >
+            Build Queue
+          </div>
+          <div id="pdf-queue" class="pdf-queue"></div>
+          <div
+            id="empty-msg"
+            style="text-align: center; padding-top: 100px; opacity: 0.5"
+          >
+            Queue is empty.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="module" src="/js/img-to-pdf.js"></script>
+  </body>
+</html>
