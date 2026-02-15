@@ -1,71 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Helper Kit | Privacy-First Tools</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="main-wrapper">
-      <div style="margin-bottom: 20px">
-        <a
-          href="/"
-          style="color: black; text-decoration: none; font-weight: bold"
-          >← BACK TO TOOLS</a
-        >
+      <header class="hero-box">
+        <h1>IMAGE HELPER KIT</h1>
+        <p class="subtitle">Client-Side Only. No Data Uploaded.</p>
+      </header>
+
+      <div class="search-container">
+        <div class="search-box">
+          <input
+            type="text"
+            id="toolSearch"
+            placeholder="Search tools (e.g. pdf, crop)..."
+          />
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
       </div>
 
-    <div class="main-wrapper">
-        <header class="hero-box">
-            <h1>IMAGE HELPER KIT</h1>
-            <p class="subtitle">Client-Side Only. No Data Uploaded.</p>
-        </header>
+      <main class="tools-grid" id="toolsGrid">
+        <a href="/metadata" class="tool-card" data-tags="metadata exif data">
+          <span>METADATA EDIT</span>
+        </a>
+        <a
+          href="/compress"
+          class="tool-card"
+          data-tags="compress size shrink reduce"
+        >
+          <span>COMPRESS</span>
+        </a>
+        <a
+          href="/remove-bg"
+          class="tool-card"
+          data-tags="background remove transparent ai"
+        >
+          <span
+            >REMOVE BG & <br />
+            APPLY BG</span
+          >
+        </a>
+        <a
+          href="/img-to-pdf"
+          class="tool-card"
+          data-tags="pdf converter document"
+        >
+          <span>IMG TO PDF</span>
+        </a>
+        <a
+          href="/convert"
+          class="tool-card"
+          data-tags="format convert jpg png webp"
+        >
+          <span
+            >JPG/PNG TO <br />
+            OTHER FORMAT</span
+          >
+        </a>
 
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="toolSearch" placeholder="Search tools (e.g. pdf, crop)...">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-        </div>
+        <a
+          href="/filters"
+          class="tool-card"
+          data-tags="filters black white grayscale doc"
+        >
+          <span>DOC FILTERS</span>
+        </a>
+        <a
+          href="/extract-text"
+          class="tool-card"
+          data-tags="ocr text extract read"
+        >
+          <span>EXTRACT TEXTS</span>
+        </a>
+        <a
+          href="/upscale"
+          class="tool-card"
+          data-tags="upscale resolution enlarge ai"
+        >
+          <span>UPSCALE</span>
+        </a>
+        <a href="/pdf-to-jpg" class="tool-card" data-tags="pdf image convert">
+          <span>PDF TO JPG</span>
+        </a>
 
-        <main class="tools-grid" id="toolsGrid">
-            <a href="/metadata" class="tool-card" data-tags="metadata exif data">
-                <span>METADATA EDIT</span>
-            </a>
-            <a href="/compress" class="tool-card" data-tags="compress size shrink reduce">
-                <span>COMPRESS</span>
-            </a>
-            <a href="/remove-bg" class="tool-card" data-tags="background remove transparent ai">
-                <span>REMOVE BG & <br> APPLY BG</span>
-            </a>
-            <a href="/img-to-pdf" class="tool-card" data-tags="pdf converter document">
-                <span>IMG TO PDF</span>
-            </a>
-            <a href="/convert" class="tool-card" data-tags="format convert jpg png webp">
-                <span>JPG/PNG TO <br> OTHER FORMAT</span>
-            </a>
-
-            <a href="/filters" class="tool-card" data-tags="filters black white grayscale doc">
-                <span>DOC FILTERS</span>
-            </a>
-            <a href="/extract-text" class="tool-card" data-tags="ocr text extract read">
-                <span>EXTRACT TEXTS</span>
-            </a>
-            <a href="/upscale" class="tool-card" data-tags="upscale resolution enlarge ai">
-                <span>UPSCALE</span>
-            </a>
-            <a href="/pdf-to-jpg" class="tool-card" data-tags="pdf image convert">
-                <span>PDF TO JPG</span>
-            </a>
-            
-            <a href="/editor" class="tool-card" data-tags="edit crop rotate adjust">
-                <span>IMAGE EDITING</span>
-            </a>
-        </main>
+        <a href="/editor" class="tool-card" data-tags="edit crop rotate adjust">
+          <span>IMAGE EDITING</span>
+        </a>
+      </main>
     </div>
 
     <script src="/js/main.js"></script>
-</body>
+  </body>
 </html>
