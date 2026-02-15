@@ -14,12 +14,10 @@ fileInput.addEventListener("change", (e) => {
   selectedFile = e.target.files[0];
   if (!selectedFile) return;
 
-  // Display original stats
   const sizeMB = (selectedFile.size / 1024 / 1024).toFixed(2);
   originalInfo.innerText = `Original: ${sizeMB} MB`;
   statusText.innerText = "Image Loaded";
 
-  // Draw original to canvas for preview
   const reader = new FileReader();
   reader.onload = (event) => {
     const img = new Image();
@@ -39,9 +37,9 @@ compressBtn.onclick = async () => {
   statusText.innerText = "Compressing...";
 
   const options = {
-    maxSizeMB: parseFloat(document.getElementById("max-size").value), // 1. Compress by size
-    maxWidthOrHeight: parseInt(document.getElementById("max-width").value), // 2. Compress by resolution
-    useWebWorker: true, // Performance optimization
+    maxSizeMB: parseFloat(document.getElementById("max-size").value), 
+    maxWidthOrHeight: parseInt(document.getElementById("max-width").value), 
+    useWebWorker: true, 
     onProgress: (p) => {
       statusText.innerText = `Processing: ${p}%`;
     },
@@ -54,7 +52,6 @@ compressBtn.onclick = async () => {
     outputInfo.innerText = `COMPRESSION COMPLETE: ${outputSize} MB`;
     statusText.innerText = "Optimization Finished";
 
-    // Update preview with compressed version
     const url = URL.createObjectURL(compressedBlob);
     const img = new Image();
     img.onload = () => {

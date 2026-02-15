@@ -32,9 +32,8 @@ extractBtn.onclick = async () => {
   if (!selectedImage) return alert("Load image first.");
 
   statusText.innerText = "Extracting... Please wait";
-  overlay.innerHTML = ""; // Clear previous overlay
+  overlay.innerHTML = ""; 
 
-  // Create Tesseract Worker
   const worker = await Tesseract.createWorker(
     document.getElementById("lang-select").value,
   );
@@ -42,10 +41,8 @@ extractBtn.onclick = async () => {
   try {
     const { data } = await worker.recognize(selectedImage);
 
-    // 1. Fill the text box
     outputText.value = data.text;
 
-    // 2. Map words to image for clicking
     const scaleX = canvas.clientWidth / selectedImage.width;
     const scaleY = canvas.clientHeight / selectedImage.height;
 

@@ -7,10 +7,9 @@ const downloadBtn = document.getElementById("download-btn");
 const toolsArea = document.getElementById("custom-bg-tools");
 const placeholder = document.getElementById("placeholder-text");
 
-let foregroundImage = null; // The transparent cutout
-let backgroundImage = null; // The custom user background
+let foregroundImage = null;
+let backgroundImage = null;
 
-// 1. Listen for Ligrila's "Processed" Event
 remover.addEventListener(
   "@ligrila/background-remover/image-processed",
   async (event) => {
@@ -27,13 +26,11 @@ remover.addEventListener(
   },
 );
 
-// 2. Handle Color Wheel Change
 colorPicker.addEventListener("input", () => {
   backgroundImage = null; // Clear background image if color is picked
   drawFinal();
 });
 
-// 3. Handle Background Image Upload
 bgImageInput.addEventListener("change", (e) => {
   const file = e.target.files[0];
   if (!file) return;
@@ -50,7 +47,6 @@ bgImageInput.addEventListener("change", (e) => {
   reader.readAsDataURL(file);
 });
 
-// 4. The Compositing Engine
 function drawFinal() {
   if (!foregroundImage) return;
 
@@ -84,7 +80,6 @@ function drawFinal() {
   ctx.drawImage(foregroundImage, 0, 0);
 }
 
-// 5. Download Function
 downloadBtn.addEventListener("click", () => {
   const link = document.createElement("a");
   link.download = `creative-cutout-${Date.now()}.png`;

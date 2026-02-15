@@ -35,8 +35,6 @@ const loadIterator = (url) => {
   img.src = url;
   img.onload = () => {
     currentImage = img;
-    // resizeW.value = img.width;
-    // resizeH.value = img.height;
     rotate = 0;
     resetFiltersOnly();
     draw();
@@ -120,8 +118,6 @@ cropCutBtn.addEventListener("click", () => {
   newImg.src = croppedCanvas.toDataURL();
   newImg.onload = () => {
     currentImage = newImg;
-    // resizeW.value = newImg.width;
-    // resizeH.value = newImg.height;
 
     destroyCropper();
     resetFiltersOnly();
@@ -156,7 +152,6 @@ function disableFilters(disabled) {
     grayscaleInput,
     rotateLeftBtn,
     rotateRightBtn,
-    // resizeBtn,
   ];
   inputs.forEach((el) => (el.disabled = disabled));
 }

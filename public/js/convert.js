@@ -12,7 +12,6 @@ const ctx = canvas.getContext("2d");
 let originalImage = null;
 let originalFileName = "converted-image";
 
-// Update the quality label when sliding
 qualitySlider.oninput = () => {
   qualityLabel.innerText = `Quality (${qualitySlider.value}%)`;
 };
@@ -28,11 +27,9 @@ fileInput.addEventListener("change", (e) => {
   reader.onload = (event) => {
     originalImage = new Image();
     originalImage.onload = () => {
-      // Set canvas to match the image dimensions
       canvas.width = originalImage.width;
       canvas.height = originalImage.height;
 
-      // Clear and Draw
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(originalImage, 0, 0);
       statusText.innerText = "Ready for Conversion";
@@ -48,8 +45,6 @@ convertBtn.onclick = () => {
   const mimeType = targetFormat.value;
   const quality = qualitySlider.value / 100;
 
-  // Core Engine: Native browser encoding via toDataURL
-  // If target is JPEG, we fill the background with white to prevent black transparent areas
   if (mimeType === "image/jpeg") {
     ctx.fillStyle = "#FFFFFF";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -61,7 +56,6 @@ convertBtn.onclick = () => {
   const extension = mimeType.split("/")[1];
   const cleanExt = extension === "jpeg" ? "jpg" : extension;
 
-  // Trigger the Download
   const link = document.createElement("a");
   link.href = newDataUrl;
   link.download = `${originalFileName}.${cleanExt}`;

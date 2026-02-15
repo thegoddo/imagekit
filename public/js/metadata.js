@@ -33,7 +33,6 @@ function renderUI() {
   metaList.innerHTML = "";
   placeholder.style.display = "none";
 
-  // Loop categories: 0th (Main), Exif (Sub), GPS
   ["0th", "Exif", "GPS"].forEach((cat) => {
     for (const tagId in exifObj[cat]) {
       const tagName = piexif.TAGS[cat][tagId]?.name || `Tag ${tagId}`;
@@ -56,7 +55,6 @@ function renderUI() {
   });
 }
 
-// 1. Individual Tag Actions
 window.editMeta = (cat, tagId) => {
   const newVal = prompt(
     `Update ${piexif.TAGS[cat][tagId].name}:`,
@@ -75,7 +73,6 @@ window.deleteMeta = (cat, tagId) => {
   }
 };
 
-// 2. Global Actions
 document.getElementById("strip-all-btn").onclick = () => {
   currentBase64 = piexif.remove(currentBase64); // Strip entire binary segment
   exifObj = piexif.load(currentBase64);
@@ -89,14 +86,13 @@ document.getElementById("smart-clean-btn").onclick = () => {
 
     Object.keys(exifObj[cat]).forEach((id) => {
       if (!whitelist.includes(Number(id))) {
-        delete exifObj[cat][id]; // Remove non-essential tags
+        delete exifObj[cat][id];
       }
     });
   }
   syncAndRender();
 };
 
-// 3. Binary Sync (No download)
 function syncAndRender() {
   try {
     const exifBytes = piexif.dump(exifObj); // Object -> Binary
@@ -107,7 +103,6 @@ function syncAndRender() {
   }
 }
 
-// 4. Download Final Result
 document.getElementById("download-final").onclick = () => {
   if (!currentBase64) return;
   const link = document.createElement("a");

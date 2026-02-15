@@ -10,7 +10,6 @@ const ctx = canvas.getContext("2d");
 let originalImage = new Image();
 let controller = new AbortController();
 
-// 1. Hardware Detection: GPU vs CPU
 const hasWebGL = () => {
   const canvas = document.createElement("canvas");
   const gl =
@@ -43,7 +42,6 @@ fileInput.onchange = (e) => {
 upscaleBtn.onclick = async () => {
   if (!originalImage.src) return alert("Load image first.");
 
-  // Safeguard: Limit input size to prevent instant crash
   if (originalImage.width > 1200 || originalImage.height > 1200) {
     if (
       !confirm(
@@ -63,7 +61,6 @@ upscaleBtn.onclick = async () => {
       model: window.DefaultUpscalerJSModel, // 2x AI Model
     });
 
-    // 2. Safeguard: High Granularity Processing
     // Small patchSize (32) makes the UI more responsive during AI work
     const upscaledDataUrl = await upscaler.upscale(originalImage, {
       patchSize: 32,

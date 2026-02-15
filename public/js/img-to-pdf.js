@@ -55,10 +55,8 @@ convertBtn.onclick = async () => {
   for (let i = 0; i < imageFiles.length; i++) {
     const imgData = await readFileAsDataURL(imageFiles[i]);
 
-    // Add new page for subsequent images
     if (i > 0) doc.addPage();
 
-    // Fit image to page while maintaining aspect ratio
     doc.addImage(
       imgData,
       "JPEG",
