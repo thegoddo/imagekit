@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Filter Architect | Retro Tool</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editor.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cssgram/0.1.12/cssgram.min.css"
+    />
+    <style>
+      /* Container must be figures for CSSGram to apply overlays correctly */
+      #filter-viewport {
+        position: relative;
+        display: inline-block;
+      }
+      .preset-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-height: 250px;
+        overflow-y: auto;
+        padding-right: 5px;
+      }
+      .preset-btn {
+        font-size: 0.7rem;
+        padding: 5px;
+        background: #fff;
+        border: 2px solid #000;
+        cursor: pointer;
+      }
+      .preset-btn:hover {
+        background: #ffffcc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="hero-box">
+        <h1>Filter Architect</h1>
+        <p class="subtitle">Aesthetic Preset Engine</p>
+      </div>
+
+      <div class="editor-container">
+        <div class="editor-panel">
+          <div class="filter-section">
+            <h3>1. Source</h3>
+            <input type="file" id="file-input" accept="image/*" hidden />
+            <button
+              class="choose-img"
+              onclick="document.getElementById('file-input').click()"
+            >
+              Load Image
+            </button>
+          </div>
+
+          <div class="filter-section">
+            <h3>2. Pro Presets</h3>
+            <div class="preset-grid">
+              <button class="preset-btn" data-class="_1977">1977</button>
+              <button class="preset-btn" data-class="aden">Aden</button>
+              <button class="preset-btn" data-class="brannan">Brannan</button>
+              <button class="preset-btn" data-class="brooklyn">Brooklyn</button>
+              <button class="preset-btn" data-class="clarendon">
+                Clarendon
+              </button>
+              <button class="preset-btn" data-class="earlybird">
+                Earlybird
+              </button>
+              <button class="preset-btn" data-class="gingham">Gingham</button>
+              <button class="preset-btn" data-class="hudson">Hudson</button>
+              <button class="preset-btn" data-class="inkwell">Inkwell</button>
+              <button class="preset-btn" data-class="lark">Lark</button>
+              <button class="preset-btn" data-class="lofi">Lo-Fi</button>
+              <button class="preset-btn" data-class="mayfair">Mayfair</button>
+              <button class="preset-btn" data-class="moon">Moon</button>
+              <button class="preset-btn" data-class="nashville">
+                Nashville
+              </button>
+              <button class="preset-btn" data-class="perpetua">Perpetua</button>
+              <button class="preset-btn" data-class="reyes">Reyes</button>
+              <button class="preset-btn" data-class="rise">Rise</button>
+              <button class="preset-btn" data-class="slumber">Slumber</button>
+              <button class="preset-btn" data-class="toaster">Toaster</button>
+              <button class="preset-btn" data-class="walden">Walden</button>
+              <button class="preset-btn" data-class="willow">Willow</button>
+              <button class="preset-btn" data-class="xpro2">X-Pro II</button>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h3>3. Export</h3>
+            <button class="save" id="download-btn">Export with Filter</button>
+          </div>
+        </div>
+
+        <div class="preview-img">
+          <figure id="filter-viewport">
+            <canvas id="main-canvas"></canvas>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/js/filters.js"></script>
+  </body>
+</html>
