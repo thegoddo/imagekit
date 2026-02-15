@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image Compressor | Retro Tool</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editor.css" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="hero-box">
+        <h1>Data Compressor</h1>
+        <p class="subtitle">Optimize Binary Footprint & Resolution</p>
+      </div>
+
+      <div class="editor-container">
+        <div class="editor-panel">
+          <div class="filter-section">
+            <h3>1. Source</h3>
+            <input type="file" id="file-input" accept="image/*" hidden />
+            <button
+              class="choose-img"
+              onclick="document.getElementById('file-input').click()"
+            >
+              Load Image
+            </button>
+            <div
+              id="original-info"
+              style="font-size: 0.7rem; margin-top: 10px; opacity: 0.7"
+            ></div>
+          </div>
+
+          <div class="filter-section">
+            <h3>2. Size Target</h3>
+            <div class="filter">
+              <label>Max File Size (MB)</label>
+              <input
+                type="number"
+                id="max-size"
+                value="1"
+                step="0.1"
+                min="0.1"
+                style="width: 100%; border: 2px solid #000; padding: 5px"
+              />
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h3>3. Resolution</h3>
+            <div class="filter">
+              <label>Max Width (px)</label>
+              <input
+                type="number"
+                id="max-width"
+                value="1920"
+                style="width: 100%; border: 2px solid #000; padding: 5px"
+              />
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h3>4. Execute</h3>
+            <button class="save" id="compress-btn">Compress Image</button>
+          </div>
+        </div>
+
+        <div class="preview-img" style="flex-direction: column">
+          <div
+            id="status-text"
+            style="
+              margin-bottom: 10px;
+              font-weight: bold;
+              text-transform: uppercase;
+            "
+          >
+            Preview Area
+          </div>
+          <canvas id="preview-canvas"></canvas>
+          <div
+            id="output-info"
+            style="margin-top: 15px; font-size: 0.85rem; font-family: monospace"
+          ></div>
+          <button
+            id="download-btn"
+            style="display: none; margin-top: 10px; background: #ffffcc"
+          >
+            Download Compressed
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"
+    ></script>
+    <script type="module" src="/js/compress.js"></script>
+  </body>
+</html>

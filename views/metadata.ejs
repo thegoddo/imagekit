@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Metadata Architect | Retro Tool</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editor.css" />
+    <style>
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px dashed #000;
+      }
+      .meta-info {
+        flex-grow: 1;
+        font-family: monospace;
+      }
+      .meta-key {
+        font-weight: bold;
+        text-transform: uppercase;
+        display: block;
+        font-size: 0.75rem;
+      }
+      .meta-val {
+        font-size: 0.85rem;
+        color: #444;
+        word-break: break-all;
+      }
+      .meta-actions {
+        display: flex;
+        gap: 8px;
+      }
+      .btn-action {
+        padding: 4px 10px;
+        font-size: 0.7rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="hero-box">
+        <h1>Metadata Architect</h1>
+        <p class="subtitle">Binary Header Manipulation Engine</p>
+      </div>
+
+      <div class="editor-container">
+        <div class="editor-panel">
+          <div class="filter-section">
+            <h3>1. Load Data</h3>
+            <input type="file" id="file-input" accept="image/jpeg" hidden />
+            <button
+              class="choose-img"
+              onclick="document.getElementById('file-input').click()"
+            >
+              Select JPEG
+            </button>
+          </div>
+
+          <div class="filter-section">
+            <h3>2. Global Ops</h3>
+            <button
+              id="strip-all-btn"
+              style="width: 100%; background: #ffcccc; margin-bottom: 10px"
+            >
+              Strip All Data
+            </button>
+            <button
+              id="smart-clean-btn"
+              style="width: 100%; background: #ccffcc"
+            >
+              Smart Clean (App Friendly)
+            </button>
+            <p style="font-size: 0.7rem; margin-top: 5px; opacity: 0.7">
+              *Smart Clean keeps Date & Orientation for Google Photos/WhatsApp.
+            </p>
+          </div>
+
+          <div class="filter-section">
+            <h3>3. Commit</h3>
+            <button class="save" id="download-final">Download Final</button>
+          </div>
+        </div>
+
+        <div
+          class="preview-img"
+          style="
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            overflow-y: auto;
+          "
+        >
+          <div
+            id="status-placeholder"
+            style="text-align: center; padding-top: 100px"
+          >
+            <h3>Binary Reader Idle</h3>
+            <p>Waiting for JPEG input...</p>
+          </div>
+          <div id="metadata-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/piexifjs@1.0.6/piexif.js"></script>
+    <script type="module" src="/js/metadata.js"></script>
+  </body>
+</html>
