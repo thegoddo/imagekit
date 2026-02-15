@@ -1,0 +1,147 @@
+:root {
+  --bg-color: #f8f9fa;
+  --grid-line: #e0e0e0; /* Light gray for graph paper */
+  --border-color: #000; /* Strict black borders */
+  --card-bg: #fff;
+  --hover-shadow: 4px 4px 0px rgba(0, 0, 0, 1); /* Hard shadow */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace; /* Tech/Wireframe vibe */
+  background-color: var(--bg-color);
+  color: #000;
+  min-height: 100vh;
+
+  /* THE GRAPH PAPER EFFECT */
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 20px 20px;
+
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.main-wrapper {
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* Header */
+.hero-box {
+  border: 2px solid var(--border-color);
+  background: var(--card-bg);
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+}
+
+.hero-box h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Search */
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  border: 2px solid var(--border-color);
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 50px; /* Pill shape */
+  width: 300px;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.search-box button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* Grid System */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 Columns strictly */
+  gap: 20px;
+}
+
+.tool-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  aspect-ratio: 1 / 0.8; /* Rectangular shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 15px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Hover Effects */
+.tool-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--hover-shadow);
+  background-color: #fff;
+}
+
+/* Hidden state for search filtering */
+.hidden {
+  display: none !important;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .tools-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-box h1 {
+    font-size: 1.8rem;
+  }
+  .search-box {
+    width: 100%;
+  }
+}
