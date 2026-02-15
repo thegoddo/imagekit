@@ -48,7 +48,7 @@ app.get("/extract-text", (req, res) => {
 });
 
 app.get("/upscale", (req, res) => {
-  res.render("upscale", "Upscale Image");
+  res.render("upscale", { title: "Upscale Image" });
 });
 
 app.get("/pdf-to-jpg", (req, res) => {
