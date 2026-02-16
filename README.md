@@ -82,8 +82,3 @@ This project is built on the principle of Edge Computing. By offloading image pr
 ## 🎨 Aesthetic
 
 The UI follows a Retro-Wireframe design language, focusing on high-contrast borders and a clean, utilitarian "developer tool" feel.
-
-## 💡 Pro-Tips for your Portfolio
-
-- **Add Screenshots:** Once you deploy to **Koyeb**, take high-quality screenshots of the "Subject Architect" and "Filter Architect" in action and add them to the `README`.
-- **Live Demo Link:** Place your Koyeb URL at the very top so recruiters can test the AI speed immediately.
